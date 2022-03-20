@@ -37,17 +37,17 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 
 # Model scores on test and training data
 
+breast_cancer.append(x.size) # Add the breast_cancer's size
+
 breast_cancer.append(bgclassifier.score(X_test, y_test))
+
 breast_cancer.append(bgclassifier.score(X_train, y_train))
 
-# Predict the response for test dataset
-y_pred = bgclassifier.predict(X_test)
+bagging.append(breast_cancer) # Add the balance_scale results
 
-# Model Accuracy, how often is the classifier correct?
-accuracy = metrics.accuracy_score(y_test, y_pred)
 
-# Tase error
-error = 1 - accuracy
+print('Bagging ->  ', bagging) # Print the bagging's array
+
 
 
 ##########################################################################################

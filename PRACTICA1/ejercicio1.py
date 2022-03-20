@@ -1,96 +1,92 @@
-# Practica 1
+# Practica 1- Ejercicio 1
+# Compare el rendimiento de al menos 2 métodos no basados en boosting, como la mezcla
+# por votación, bagging o random forest
 # Realizado por Jaime Lorenzo Sanchez
 
-# Bibliotecas
+# Tratamiento de datos
 
 import numpy as np
 import pandas as pd
+
+# ======================================================
+# Preprocesado y modelado
+
+from sklearn import datasets
+from sklearn import metrics 
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
-from sklearn.naive_bayes import GaussianNB # Import GaussianNB (a Naive Bayes classifier)
-from sklearn import metrics #Import scikit­learn metrics module for accuracy calculation
 
-# Leemos el archivo iris.data
 
-cols_names = ['sepal length','sepal width', 'petal length','petal width', 'label']
+from sklearn.model_selection import GridSearchCV
+import multiprocessing
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedKFold
+from sklearn.model_selection import ParameterGrid
+from sklearn.inspection import permutation_importance
 
-archivo1 = pd.read_csv('iris.data', header = None, names = cols_names, sep = ",")
+############################## breast cancer sklearn ###########################################
+
+# Load the breast cancer dataset
+bc = datasets.load_breast_cancer()
+x = bc.data
+y = bc.target
+
+# Split dataset into training set and test set
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1) # 70% training and 30% test
+
+# Model scores on test and training data
+
+breast_cancer.append(bgclassifier.score(X_test, y_test))
+breast_cancer.append(bgclassifier.score(X_train, y_train))
+
+# Predict the response for test dataset
+y_pred = bgclassifier.predict(X_test)
+
+# Model Accuracy, how often is the classifier correct?
+accuracy = metrics.accuracy_score(y_test, y_pred)
+
+# Tase error
+error = 1 - accuracy
+
+
+##########################################################################################
+###########################################################################################
+
+random_forest = [] # Random forest's array
+
+iris_array2 = [] # iris's array
 
 # split dataset in features and target variable
 
 feature_cols = ['sepal length','sepal width', 'petal length','petal width']
-	
-X = archivo1[feature_cols] # Features
-y = archivo1.label # Target variable
+
+x = iris[feature_cols] # Features
+
+y = iris.label # Target variable
 
 # Split dataset into training set and test set
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) # 70% training and 30% test
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=123) # 70% training and 30% test
 
-# Create Decision Tree classifer object
+# Creación del modelo
+# ==============================================================================
+modelo = RandomForestRegressor(
+            n_estimators = 10,
+            criterion    = 'mse',
+            max_depth    = None,
+            max_features = 'auto',
+            oob_score    = False,
+            n_jobs       = -1,
+            random_state = 123
+         )
+         
+# Entrenamiento del modelo
 
-clf = DecisionTreeClassifier()
+#modelo.fit(X_train, y_train)
 
-# Train Decision Tree Classifer
+#balance_scale_array2 = [] # balance-scale's array
 
-clf = clf.fit(X_train,y_train)
-
-# Predict the response for test dataset
-
-y_pred = clf.predict(X_test)
-
-# Model Accuracy, how often is the classifier correct?
-print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-
-nv = GaussianNB() # create a classifier
-
-nv.fit(X_train,y_train) # fitting the data
-
-y_pred = nv.predict(X_test) # store the prediction data
-
-
-print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-
-# Leemos el archivo balance-scale.data
-
-cols_names = ['Class','Left-Weight', 'Left-Distance','Right-Weight', 'Right-Distance']
-
-
-archivo1 = pd.read_csv('balance-scale.data', header = None, names = cols_names, sep = ",")
-
-# split dataset in features and target variable
-
-feature_cols = ['Left-Weight', 'Left-Distance','Right-Weight', 'Right-Distance']
-	
-X = archivo1[feature_cols] # Features
-y = archivo1.Class # Target variable
-
-# Split dataset into training set and test set
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) # 70% training and 30% test
-
-# Create Decision Tree classifer object
-
-clf = DecisionTreeClassifier()
-
-# Train Decision Tree Classifer
-
-clf = clf.fit(X_train,y_train)
-
-# Predict the response for test dataset
-
-y_pred = clf.predict(X_test)
-
-# Model Accuracy, how often is the classifier correct?
-print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-
-nv = GaussianNB() # create a classifier
-
-nv.fit(X_train,y_train) # fitting the data
-
-y_pred = nv.predict(X_test) # store the prediction data
-
-
-print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+#breast_cancer2 = [] # breast cancer dataset's array
 
 

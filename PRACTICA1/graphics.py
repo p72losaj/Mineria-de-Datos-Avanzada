@@ -26,3 +26,4 @@ test_randomForest = [0.956,0.819, 0.947]; error_randomForest = [0.044,0.181, 0.0
 # plt.plot(nElements,test_bagging,label = 'randomForest_test'); plt.plot(nElements,error_bagging,label='randomForest_error') ; plt.plot(nElements,test_bagging,label = 'bgclassifier_test'); plt.plot(nElements,error_bagging,label='bgclassifier_error') ; plt.xlabel('Number of elements of dataset'); plt.ylabel('Rate of the result'); plt.title('Relation RandomForest and bagging classifiers') ; plt.legend(); plt.show() 
 
 
+

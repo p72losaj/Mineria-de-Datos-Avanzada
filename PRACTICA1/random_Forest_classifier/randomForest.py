@@ -34,7 +34,7 @@ classifier=RandomForestClassifier(n_estimators=25)
 
 # Construimos el modelo sobre los datos de entrenamiento
 
-classifier = classifier.fit(X_train,y_train)
+classifier.fit(X_train,y_train)
 
 # Model scores on test data
 
@@ -54,7 +54,7 @@ error = 1 - accuracy
 
 # Show the results
 
-print('##########\nIRIS DATA#####')
+print('##########IRIS DATA#####')
 
 print('Test -> ', test); print('Error-> ', error)
 
@@ -81,7 +81,7 @@ classifier=RandomForestClassifier(n_estimators=25)
 
 # Construimos el modelo sobre los datos de entrenamiento
 
-classifier= classifier.fit(X_train,y_train)
+classifier.fit(X_train,y_train)
 
 # Model scores on test and training data
 
@@ -101,7 +101,7 @@ error = 1 - accuracy
 
 # Show the result's classifier
 
-print('##########\nBALANCE-SCALE DATA#####')
+print('##########BALANCE-SCALE DATA#####')
 print('Test -> ', test); print('Error-> ', error)
 
 ### LOAD THE BREAST CANCER DATASET ####
@@ -120,7 +120,7 @@ classifier=RandomForestClassifier(n_estimators=25)
 
 # Construimos el modelo sobre los datos de entrenamiento
 
-classifier = classifier.fit(X_train,y_train)
+classifier.fit(X_train,y_train)
 
 # Model scores on test data
 
@@ -140,7 +140,7 @@ error = 1 - accuracy
 
 # Show the results
 
-print('##########\nBREAST CANCER DATA#####')
+print('##########BREAST CANCER DATA#####')
 
 print('Test -> ', test); print('Error-> ', error)
 

@@ -9,7 +9,7 @@ import pandas as pd
 from sklearn import datasets
 from sklearn import metrics 
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier 
+from sklearn.naive_bayes import GaussianNB 
 
 #### LOAD THE IRIS DATASET ###############
 
@@ -28,21 +28,21 @@ y = iris.label
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
 
-# Create Decision Tree classifer object
+# Create a Naïve Bayes classifier
 
-classifier = DecisionTreeClassifier()
+classifier = GaussianNB()
 
-# Train Decision Tree Classifer
+# Train the Naïve Bayes classifier
 
 classifier.fit(X_train,y_train)
-
-# Model scores on test data
-
-test = classifier.score(X_test, y_test)
 
 # Predict the response for test dataset
 
 y_pred = classifier.predict(X_test)
+
+# Model scores on test data
+
+test = classifier.score(X_test, y_test)
 
 # Model Accuracy, how often is the classifier correct?
 
@@ -75,17 +75,17 @@ y = balance_scale.Class
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
 
-# Train Decision Tree Classifer
+# Train the Naïve Bayes classifier
 
 classifier.fit(X_train,y_train)
-
-# Model scores on test data
-
-test = classifier.score(X_test, y_test)
 
 # Predict the response for test dataset
 
 y_pred = classifier.predict(X_test)
+
+# Model scores on test data
+
+test = classifier.score(X_test, y_test)
 
 # Model Accuracy, how often is the classifier correct?
 
@@ -110,9 +110,13 @@ y = bc.target
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
 
-# Train Decision Tree Classifer
+# Train the Naïve Bayes classifier
 
 classifier.fit(X_train,y_train)
+
+# Predict the response for test dataset
+
+y_pred = classifier.predict(X_test)
 
 # Model scores on test data
 
@@ -132,7 +136,7 @@ error = 1 - accuracy
 
 # Show the results
 
-print('##########\nBREAST CANCER DATA#####')
+print('##########BREAST CANCER DATA#####')
 
 print('Test -> ', test); print('Error-> ', error)
 

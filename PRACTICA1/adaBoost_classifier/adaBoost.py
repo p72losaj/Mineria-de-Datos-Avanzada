@@ -9,7 +9,8 @@ import pandas as pd
 from sklearn import datasets
 from sklearn import metrics 
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier 
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 #### LOAD THE IRIS DATASET ###############
 
@@ -28,21 +29,21 @@ y = iris.label
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
 
-# Create Decision Tree classifer object
+# Create the AdaBoost's classifier
 
-classifier = DecisionTreeClassifier()
+classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1),n_estimators=200)
 
-# Train Decision Tree Classifer
+# Train the AdaBoost's classifier
 
 classifier.fit(X_train,y_train)
-
-# Model scores on test data
-
-test = classifier.score(X_test, y_test)
 
 # Predict the response for test dataset
 
 y_pred = classifier.predict(X_test)
+
+# Model scores on test data
+
+test = classifier.score(X_test, y_test)
 
 # Model Accuracy, how often is the classifier correct?
 
@@ -75,17 +76,21 @@ y = balance_scale.Class
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
 
-# Train Decision Tree Classifer
+# Create the AdaBoost's classifier
+
+classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1),n_estimators=200)
+
+# Train the AdaBoost's classifier
 
 classifier.fit(X_train,y_train)
-
-# Model scores on test data
-
-test = classifier.score(X_test, y_test)
 
 # Predict the response for test dataset
 
 y_pred = classifier.predict(X_test)
+
+# Model scores on test data
+
+test = classifier.score(X_test, y_test)
 
 # Model Accuracy, how often is the classifier correct?
 
@@ -95,9 +100,10 @@ accuracy = metrics.accuracy_score(y_test, y_pred)
 
 error = 1 - accuracy
 
-# Show the result's classifier
+# Show the results
 
 print('##########BALANCE-SCALE DATA#####')
+
 print('Test -> ', test); print('Error-> ', error)
 
 ### LOAD THE BREAST CANCER DATASET ####
@@ -110,17 +116,21 @@ y = bc.target
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
 
-# Train Decision Tree Classifer
+# Create the AdaBoost's classifier
+
+classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1),n_estimators=200)
+
+# Train the AdaBoost's classifier
 
 classifier.fit(X_train,y_train)
-
-# Model scores on test data
-
-test = classifier.score(X_test, y_test)
 
 # Predict the response for test dataset
 
 y_pred = classifier.predict(X_test)
+
+# Model scores on test data
+
+test = classifier.score(X_test, y_test)
 
 # Model Accuracy, how often is the classifier correct?
 
@@ -132,7 +142,7 @@ error = 1 - accuracy
 
 # Show the results
 
-print('##########\nBREAST CANCER DATA#####')
+print('##########BREAST CANCER DATA#####')
 
 print('Test -> ', test); print('Error-> ', error)
 

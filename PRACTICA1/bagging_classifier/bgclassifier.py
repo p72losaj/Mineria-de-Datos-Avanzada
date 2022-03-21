@@ -60,7 +60,7 @@ error = 1 - accuracy
 
 # Show the results
 
-print('##########\nIRIS DATA#####')
+print('##########IRIS DATA#####')
 
 print('Test -> ', test); print('Error-> ', error)
 
@@ -85,10 +85,6 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 
 pipeline = make_pipeline(StandardScaler(),LogisticRegression(random_state=1))
 
-# Instantiate the bagging classifier
-
-bgclassifier = BaggingClassifier(base_estimator=pipeline, n_estimators=100,max_features=4,max_samples=100,random_state=1, n_jobs=5)
-
 # Fit the bagging classifier
 
 bgclassifier.fit(X_train, y_train)
@@ -111,7 +107,7 @@ error = 1 - accuracy
 
 # Show the result's classifier
 
-print('##########\nBALANCE-SCALE DATA#####')
+print('##########BALANCE-SCALE DATA#####')
 print('Test -> ', test); print('Error-> ', error)
 
 ### LOAD THE BREAST CANCER DATASET ####
@@ -141,6 +137,11 @@ accuracy = metrics.accuracy_score(y_test, y_pred)
 # Tase error
 error = 1 - accuracy
 
-# print('Tamano dataset-> ', x.size); print('Test -> ', test); print('Train-> ', train);print('Error-> ', error)
+# Show the results
+
+print('##########BREAST CANCER DATA#####')
+
+print('Test -> ', test); print('Error-> ', error)
+
 
 

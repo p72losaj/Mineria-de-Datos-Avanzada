@@ -42,12 +42,11 @@ test_AdaBoost = [0.956,0.904,0.977]; error_AdaBoost = [0.044,0.096,0.023]
 
 # Tree Decision, Naïve_Bayes and AdaBoost's graphic
 
-plt.plot(nElements,test_AdaBoost,label = 'AdaBoost_test'); plt.plot(nElements,error_AdaBoost,label='AdaBoost_error'); plt.plot(nElements,test_treeDecision,label = 'treeDecision_test'); plt.plot(nElements,error_treeDecision,label='treeDecision_error');plt.plot(nElements,test_NaïveBayes,label = 'NaïveBayes_test');plt.plot(nElements,error_NaïveBayes,label='NaïveBayes_error');plt.xlabel('Number of elements of dataset'); plt.ylabel('Rate of the result'); plt.title('Relation Dataset and classifier result'); plt.legend(); plt.show()
-
-
+#plt.plot(nElements,test_AdaBoost,label = 'AdaBoost_test'); plt.plot(nElements,error_AdaBoost,label='AdaBoost_error'); plt.plot(nElements,test_treeDecision,label = 'treeDecision_test'); plt.plot(nElements,error_treeDecision,label='treeDecision_error');plt.plot(nElements,test_NaïveBayes,label = 'NaïveBayes_test');plt.plot(nElements,error_NaïveBayes,label='NaïveBayes_error');plt.xlabel('Number of elements of dataset'); plt.ylabel('Rate of the result'); plt.title('Relation Dataset and classifier result'); plt.legend(); plt.show()
  
-
 # Evolution Error
+
+plt.plot(nElements,error_bagging,label='bagginError'); plt.plot(nElements,error_randomForest,label='error_randomForest'); plt.plot(nElements,error_treeDecision,label = 'error_error_treeDecision');plt.plot(nElements,error_NaïveBayes,label='error_NaïveBayes');plt.plot(nElements,error_AdaBoost, label='error_AdaBoost') ; plt.xlabel('Number of Elements');plt.ylabel('Error rate');plt.title('Error evolution of clasiffiers');plt.legend();plt.show()
 
 
 

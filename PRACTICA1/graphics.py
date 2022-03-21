@@ -46,9 +46,13 @@ test_AdaBoost = [0.956,0.904,0.977]; error_AdaBoost = [0.044,0.096,0.023]
  
 # Evolution Error
 
-plt.plot(nElements,error_bagging,label='bagginError'); plt.plot(nElements,error_randomForest,label='error_randomForest'); plt.plot(nElements,error_treeDecision,label = 'error_error_treeDecision');plt.plot(nElements,error_NaïveBayes,label='error_NaïveBayes');plt.plot(nElements,error_AdaBoost, label='error_AdaBoost') ; plt.xlabel('Number of Elements');plt.ylabel('Error rate');plt.title('Error evolution of clasiffiers');plt.legend();plt.show()
+# plt.plot(nElements,error_bagging,label='bagginError'); plt.plot(nElements,error_randomForest,label='error_randomForest'); plt.plot(nElements,error_treeDecision,label = 'error_error_treeDecision');plt.plot(nElements,error_NaïveBayes,label='error_NaïveBayes');plt.plot(nElements,error_AdaBoost, label='error_AdaBoost') ; plt.xlabel('Number of Elements');plt.ylabel('Error rate');plt.title('Error evolution of clasiffiers');plt.legend();plt.show()
 
+# Stacking graphics
 
+test_stacking = [0.974,0.878,0.965]; error_stacking = [0.026,0.122,0.035]
+
+plt.plot(nElements, test_bagging,label='begging_test'); plt.plot(nElements,error_bagging,label='error_bagging'); plt.plot(nElements, test_AdaBoost,label='test_AdaBoost'); plt.plot(nElements, error_AdaBoost,label='error_AdaBoost'); plt.plot(nElements, test_stacking, label='test_stacking'); plt.plot(nElements, error_stacking, label='error_stacking'); plt.xlabel('Number of Elements');plt.ylabel('Results of clasiffiers');plt.title('Stacking comparation');plt.legend();plt.show()
 
 
 

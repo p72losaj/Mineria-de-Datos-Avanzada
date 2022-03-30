@@ -5,17 +5,26 @@
 from skmultilearn.dataset import load_dataset
 import sklearn.metrics as metrics
 from skmultilearn.problem_transform import BinaryRelevance
-from sklearn.linear_model import LogisticRegression
+
+# Clasificador de regresion logistica
+from sklearn.linear_model import LogisticRegression 
+
+# Clasificador SVC
+from sklearn.svm import SVC
 
 # Lista de clasificadores a utilizar
-clasificadores = ['Logistic Regression']
+clasificadores = ['Logistic Regression', 'SVC']
 # Lista de metricas
-metricas = ['Hamming Loss', 'Accuracy','f1_score']
+metricas = ['Hamming Loss', 'Accuracy','f1_micro']
 # Lista de datos de la regresion logistica
 lr = []
+# Lista de datos del clasificador SVC
+svc = []
+
 # Leemos el dataset emotions
 X_train, y_train, feature_names, label_names = load_dataset('emotions', 'train')
 X_test, y_test, _, _ = load_dataset('emotions', 'test')
+
 # Calculamos el tamano del dataset (numero de instancias)
 emotions = 0
 
@@ -30,15 +39,27 @@ prediction = clf.predict(X_test)
 # Calculamos las metricas de la regresion logistica
 lr.append(metrics.hamming_loss(y_test, prediction))
 lr.append(metrics.accuracy_score(y_test, prediction))
-lr.append(metrics.f1_score(y_test,prediction,average='samples'))
+lr.append(metrics.f1_score(y_test,prediction,average='micro'))
+
+# Ejecutamos el metodo BR con el clasificador SVC
+clf = BinaryRelevance(classifier=SVC(), require_dense=[False, True])
+clf.fit(X_train, y_train)
+prediction = clf.predict(X_test)
+
+# Calculamos las metricas del clasificador SVC
+svc.append(metrics.hamming_loss(y_test, prediction))
+svc.append(metrics.accuracy_score(y_test, prediction))
+svc.append(metrics.f1_score(y_test,prediction,average='micro'))
 
 # Mostramos los datos obtenidos del dataset
 print('Tamano del dataset: ', emotions)
 
 for i in range (0,len(clasificadores)): 
-	print('\t\t', clasificadores[i])
-	for j in range (0,len(metricas)):
-		print(metricas[j],"\t",lr[j])
+	print('\t\t', clasificadores[i], end = " ")
+print()
+
+for j in range (0,len(metricas)):
+	print(metricas[j], "\t", lr[j], "\t", svc[j])	
 
 
 

@@ -26,17 +26,17 @@ svc = []
 # lista de datos del clasificador Arbol de decision
 tree = []
 # Leemos el dataset emotions
-X_train, y_train, feature_names, label_names = load_dataset('emotions', 'train')
-X_test, y_test, _, _ = load_dataset('emotions', 'test')
+X_train, y_train, feature_names, label_names = load_dataset('birds', 'train')
+X_test, y_test, _, _ = load_dataset('birds', 'test')
 
 # Calculamos el tamano del dataset (numero de instancias)
-emotions = 0
+birds = 0
 
 for x in X_train:
-	emotions = emotions + 1
+	birds = birds + 1
 	
 # Ejecutamos el metodo BR con Regresion Logistica
-clf = BinaryRelevance(classifier=LogisticRegression(max_iter=10000), require_dense=[False, True])
+clf = BinaryRelevance(classifier=LogisticRegression(max_iter=100000), require_dense=[False, True])
 # Entrenamos el clasificador
 clf.fit(X_train, y_train)
 # Calculamos la prediccion del test realizado
@@ -72,7 +72,7 @@ tree.append(metrics.accuracy_score(y_test, prediction))
 tree.append(metrics.f1_score(y_test,prediction,average='micro'))
 
 # Mostramos los datos obtenidos del dataset
-print('Tamano del dataset: ', emotions)
+print('Tamano del dataset: ', birds)
 
 for i in range (0,len(clasificadores)): 
 	print('\t\t', clasificadores[i], end = " ")

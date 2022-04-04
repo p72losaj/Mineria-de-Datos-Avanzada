@@ -1,5 +1,4 @@
-#!  /bin/python
-# Practica2 ejercicio1 - Dataset emotions
+#!/bin/python
 # Realizado por Jaime Lorenzo Sanchez
 
 from skmultilearn.dataset import load_dataset

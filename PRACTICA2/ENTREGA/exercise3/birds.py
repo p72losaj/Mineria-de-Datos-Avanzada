@@ -3,13 +3,11 @@
 
 from skmultilearn.dataset import load_dataset
 import sklearn.metrics as metrics
-from skmultilearn.problem_transform import LabelPowerset
+
 
 # Clasificador de regresion logistica
 from sklearn.linear_model import LogisticRegression 
 
-# Clasificador SVC
-from sklearn.svm import SVC
 
 # Clasificador Arbol de decision
 from sklearn.tree import DecisionTreeClassifier 
@@ -24,14 +22,13 @@ clasificadores = ['Logistic Regression', 'SVC', 'DecisionTreeClassifier','MLkNN'
 metricas = ['Hamming Loss', 'Accuracy','f1_micro']
 # Lista de datos de la regresion logistica
 lr = []
-# Lista de datos del clasificador SVC
-svc = []
+
 # lista de datos del clasificador Arbol de decision
 tree = []
 # Lista de datos del clasificador MLkNN
 MLkNN = []
 
-# Leemos el dataset emotions
+# Leemos el dataset birds
 X_train, y_train, feature_names, label_names = load_dataset('birds', 'train')
 X_test, y_test, _, _ = load_dataset('birds', 'test')
 	
@@ -71,6 +68,16 @@ tree.append(metrics.hamming_loss(y_test, prediction))
 tree.append(metrics.accuracy_score(y_test, prediction))
 tree.append(metrics.f1_score(y_test,prediction,average='micro'))
 
+# Ejecutamos el clasificador MlkNN
+
+classifier = MLkNN(k=5)
+classifier.fit(X_train, y_train)
+prediction = classifier.predict(X_test)
+
+# Calculamos las metricas del clasificador MLkNN
+MLkNN.append(metrics.hamming_loss(y_test, prediction))
+MLkNN.append(metrics.accuracy_score(y_test, prediction))
+MLkNN.append(metrics.f1_score(y_test,prediction,average='micro'))
 
 # Mostramos los datos obtenidos del dataset
 
@@ -79,7 +86,7 @@ for i in range (0,len(clasificadores)):
 print()
 
 for j in range (0,len(metricas)):
-	print(metricas[j], "\t", lr[j], "\t", svc[j], "\t", tree[j])	
+	print(metricas[j], "\t", lr[j], "\t", svc[j], "\t", tree[j],MLkNN[j])	
 
 
 

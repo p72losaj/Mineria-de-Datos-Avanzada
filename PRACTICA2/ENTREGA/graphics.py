@@ -32,6 +32,11 @@ lr_micro_lp_train = [0.354,0.672, 0.729]
 svc_micro_lp_train = [0.099,0.270,0.753]
 tree_micro_lp_train = [0.294,0.559, 0.575]
 mlknn_micro_train = [0.132,0.557, 0.685]
+
+# Graphics of train
+
+plt.plot(train,lr_hammingLoss_train,label='Logistic Regression'); plt.xlabel('Number of trains');plt.ylabel('Hamming Loss');plt.title('Train hamming loss multi-label problems'); plt.legend();plt.show()
+
 	 		
 ## TESTS METRICS ###
 
@@ -66,8 +71,7 @@ svc_micro_lp_test = [0.270,0.099, 0.753]
 tree_micro_test = [0.559,0.294, 0.575]
 mlknn_micro_test = [0.516,0.132, 0.685]
 
-
-
+# Graphics of test
 
 # Hamming Loss exercise2
 #plt.plot(nElements, lr_hammingLoss, label = "Logistic Regression")

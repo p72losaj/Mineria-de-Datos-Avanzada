@@ -1,5 +1,4 @@
 #!  /bin/python
-# Practica2 ejercicio1 - Dataset emotions
 # Realizado por Jaime Lorenzo Sanchez
 
 from skmultilearn.dataset import load_dataset
@@ -26,11 +25,12 @@ svc = []
 # lista de datos del clasificador Arbol de decision
 tree = []
 # Leemos el dataset emotions
-X_train, y_train, feature_names, label_names = load_dataset('birds', 'train')
-X_test, y_test, _, _ = load_dataset('birds', 'test')
-	
+X_train, y_train, feature_names, label_names = load_dataset('scene', 'train')
+X_test, y_test, _, _ = load_dataset('scene', 'test')
+
+
 # Ejecutamos el metodo BR con Regresion Logistica
-clf = LabelPowerset(classifier=LogisticRegression(max_iter=100000), require_dense=[False, True])
+clf = LabelPowerset(classifier=LogisticRegression(max_iter=10000), require_dense=[False, True])
 # Entrenamos el clasificador
 clf.fit(X_train, y_train)
 # Calculamos la prediccion del test realizado
@@ -66,6 +66,7 @@ tree.append(metrics.accuracy_score(y_test, prediction))
 tree.append(metrics.f1_score(y_test,prediction,average='micro'))
 
 # Mostramos los datos obtenidos del dataset
+
 
 for i in range (0,len(clasificadores)): 
 	print('\t\t', clasificadores[i], end = " ")

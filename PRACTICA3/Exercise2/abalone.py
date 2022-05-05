@@ -6,7 +6,6 @@ from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import RandomOverSampler
 from collections import Counter
 from imblearn.under_sampling import RandomUnderSampler
